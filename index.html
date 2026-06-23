@@ -218,6 +218,7 @@
       color: var(--muted);
     }
     .calc-field span { font-weight: 700; color: var(--text); }
+    .calc-field select,
     .calc-field input {
       width: 100%;
       border: 1px solid var(--line);
@@ -226,6 +227,17 @@
       font: inherit;
       color: var(--text);
       background: #fff;
+    }
+    .calc-field.wide { grid-column: 1 / -1; }
+    .device-spec {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #f8fbff;
+      border: 1px solid var(--line);
+      color: var(--text);
+      font-size: 13px;
+      line-height: 1.7;
     }
     .calc-note {
       margin-top: 12px;
@@ -449,38 +461,37 @@
       <section id="calculator" class="section">
         <div class="section-head">
           <div>
-            <h3>成本计算器</h3>
-            <p>输入场地、机柜和单机参数，直接计算能容线和总成本。</p>
+            <h3>单机采购试算</h3>
+            <p>先按一台设备打通采购、安装、运行、收益和回本周期，再外推整机房规模。</p>
           </div>
           <div class="section-id">CALCULATOR</div>
         </div>
-        <div class="section-grid"><div class="card"><h4>参数输入</h4><div class="body">
-                <div class="calc-grid">
-                  <label class="calc-field"><span>机房面积（㎡）</span><input id="roomArea" type="number" min="1" value="300" /></label>
-                  <label class="calc-field"><span>单柜占地（㎡）</span><input id="rackFootprint" type="number" min="0.1" step="0.1" value="0.8" /></label>
-                  <label class="calc-field"><span>通道系数</span><input id="aisleFactor" type="number" min="1" step="0.1" value="1.8" /></label>
-                  <label class="calc-field"><span>每柜机器数</span><input id="machinesPerRack" type="number" min="1" value="12" /></label>
-                  <label class="calc-field"><span>单机功率（kW）</span><input id="powerPerMachine" type="number" min="0.1" step="0.1" value="1.2" /></label>
-                  <label class="calc-field"><span>可用功率（kW）</span><input id="totalPower" type="number" min="1" value="240" /></label>
-                  <label class="calc-field"><span>单机硬件成本（元）</span><input id="hardwareCost" type="number" min="0" value="28000" /></label>
-                  <label class="calc-field"><span>单机配套成本（元）</span><input id="infraCost" type="number" min="0" value="9000" /></label>
-                  <label class="calc-field"><span>机房建设固定投入（元）</span><input id="fixedCapex" type="number" min="0" value="850000" /></label>
-                  <label class="calc-field"><span>月电价（元/kWh）</span><input id="electricityPrice" type="number" min="0" step="0.01" value="0.72" /></label>
-                  <label class="calc-field"><span>日均利用小时</span><input id="dailyHours" type="number" min="1" max="24" value="20" /></label>
-                  <label class="calc-field"><span>月场地与运维（元）</span><input id="monthlyOpex" type="number" min="0" value="78000" /></label>
+        <div class="section-grid"><div class="card"><h4>设备类型选择</h4><div class="body">
+                <div class="calc-grid single-grid">
+                  <label class="calc-field wide"><span>设备方案</span><select id="devicePreset"></select></label>
+                  <label class="calc-field"><span>采购数量</span><input id="machineCount" type="number" min="1" value="1" /></label>
+                  <label class="calc-field"><span>单台销售单价（元/小时）</span><input id="sellPerHour" type="number" min="0" step="0.01" value="8.5" /></label>
+                  <label class="calc-field"><span>利用率（%）</span><input id="utilizationRate" type="number" min="1" max="100" value="65" /></label>
+                  <label class="calc-field"><span>电价（元/kWh）</span><input id="electricityPrice" type="number" min="0" step="0.01" value="0.72" /></label>
+                  <label class="calc-field"><span>每日运行小时</span><input id="dailyHours" type="number" min="1" max="24" value="20" /></label>
+                  <label class="calc-field"><span>单台月运维（元）</span><input id="monthlyOpex" type="number" min="0" value="7800" /></label>
+                  <label class="calc-field"><span>安装调试（元/台）</span><input id="installCost" type="number" min="0" value="1800" /></label>
+                  <label class="calc-field"><span>单台采购成本（元）</span><input id="purchaseCost" type="number" min="0" value="28000" /></label>
+                  <label class="calc-field"><span>光伏抵扣（月，元）</span><input id="pvOffset" type="number" min="0" value="0" /></label>
                 </div>
-                <div class="calc-note">结果按面积、机柜、功率三重约束同时收紧，避免只看一项导致超配。</div>
+                <div class="device-spec" id="deviceSpec">-</div>
+                <div class="calc-note">先按 1 台设备试算，后续可以把采购数量改成多台并自动外推。厂房自有时可把场地成本填低；如果有光伏，可在光伏抵扣里填写每月节省电费。</div>
                 </div></div><div class="card"><h4>计算结果</h4><div class="body">
-                <div class="calc-results">
-                  <div class="result-box"><span>可用机柜数</span><strong id="outRacks">-</strong><em>按面积和通道系数估算</em></div>
-                  <div class="result-box"><span>可容纳机器数</span><strong id="outMachines">-</strong><em>受机柜数与功率双约束</em></div>
-                  <div class="result-box"><span>月电费</span><strong id="outPowerCost">-</strong><em>按满载估算</em></div>
-                  <div class="result-box"><span>总 CAPEX</span><strong id="outCapex">-</strong><em>固定投入 + 单机投入</em></div>
-                  <div class="result-box"><span>月 OPEX</span><strong id="outOpex">-</strong><em>电费 + 场地运维</em></div>
-                  <div class="result-box"><span>单机综合成本</span><strong id="outPerMachine">-</strong><em>总 CAPEX / 机器数</em></div>
+                <div class="calc-results single-results">
+                  <div class="result-box"><span>总采购与调试</span><strong id="outPurchase">-</strong><em>采购 + 安装调试</em></div>
+                  <div class="result-box"><span>日算力产出</span><strong id="outDailyCompute">-</strong><em>按设备配置估算</em></div>
+                  <div class="result-box"><span>月收入</span><strong id="outRevenue">-</strong><em>单价 × 小时 × 利用率</em></div>
+                  <div class="result-box"><span>月电费</span><strong id="outPowerCost">-</strong><em>功率 × 小时 × 电价</em></div>
+                  <div class="result-box"><span>月净收益</span><strong id="outNet">-</strong><em>收入 - 电费 - 运维 + 光伏</em></div>
+                  <div class="result-box"><span>回本周期</span><strong id="outPayback">-</strong><em>投入 / 月净收益</em></div>
                 </div>
                 <div class="calc-summary" id="calcSummary">-</div>
-                </div></div><div class="card"><h4>规则说明</h4><div class="body"><ul><li>机柜数 = 可用面积 /举模单柜占地×通道系数</li><li>机器数 = 机柜数 × 每柜机器数，再受功率限制</li><li>功率成本 = 机器数 × 单机功率 × 日均运行小时 × 30 × 电价</li><li>总成本 = 固定投入 + 单机硬件 + 单机配套</li></ul></div></div></div>
+                </div></div><div class="card"><h4>设备配置备选</h4><div class="body"><ul><li>入门型：RTX 4090 双卡，适合测试和轻量推理</li><li>主力型：RTX 6000 Ada 四卡，适合中小租赁</li><li>高配型：A100 80G 四卡，适合训练和企业级推理</li><li>超高配：H100/H200 四卡，适合高单价客户</li><li>托管型：EPYC / Xeon + 多盘位，适合裸金属和存储业务</li></ul></div></div></div>
         
       </section>
     
@@ -515,66 +526,70 @@
   <script>
     const sections = {"overview": "overview", "product": "product", "tech": "tech", "infra": "infra", "ops": "ops", "finance": "finance", "calculator": "calculator", "roadmap": "roadmap", "compliance": "compliance"};
     const buttons = document.querySelectorAll(".nav-btn");
+    const devicePresets = [{"name": "\u5165\u95e8\u578b RTX 4090 \u53cc\u5361", "purchaseCost": 28000, "installCost": 1800, "powerKW": 1.1, "dailyCompute": 120, "notes": "\u9002\u5408\u6d4b\u8bd5\u3001\u8f7b\u91cf\u63a8\u7406\u3001\u8d77\u6b65\u79df\u8d41\u3002"}, {"name": "\u4e3b\u529b\u578b RTX 6000 Ada \u56db\u5361", "purchaseCost": 128000, "installCost": 4500, "powerKW": 2.8, "dailyCompute": 420, "notes": "\u9002\u5408\u5e38\u89c4\u7b97\u529b\u79df\u8d41\u3001\u4e2d\u5c0f\u5ba2\u6237\u4ea4\u4ed8\u3002"}, {"name": "\u9ad8\u914d\u578b A100 80G \u56db\u5361", "purchaseCost": 420000, "installCost": 9000, "powerKW": 4.0, "dailyCompute": 980, "notes": "\u9002\u5408\u8bad\u7ec3\u3001\u4f01\u4e1a\u7ea7\u63a8\u7406\u3001\u9ad8\u5355\u4ef7\u8ba2\u5355\u3002"}, {"name": "\u8d85\u9ad8\u914d H100/H200 \u56db\u5361", "purchaseCost": 880000, "installCost": 14000, "powerKW": 5.5, "dailyCompute": 1800, "notes": "\u9002\u5408\u9ad8\u7aef\u5ba2\u6237\u3001\u957f\u5468\u671f\u5927\u5355\u3002"}, {"name": "\u6258\u7ba1\u578b EPYC+\u5b58\u50a8\u670d\u52a1\u5668", "purchaseCost": 56000, "installCost": 2800, "powerKW": 1.6, "dailyCompute": 40, "notes": "\u9002\u5408\u88f8\u91d1\u5c5e\u3001\u5b58\u50a8\u3001\u8c03\u5ea6\u4e0e\u526f\u4ea7\u54c1\u670d\u52a1\u3002"}];
     const calc = {
-      roomArea: document.getElementById("roomArea"),
-      rackFootprint: document.getElementById("rackFootprint"),
-      aisleFactor: document.getElementById("aisleFactor"),
-      machinesPerRack: document.getElementById("machinesPerRack"),
-      powerPerMachine: document.getElementById("powerPerMachine"),
-      totalPower: document.getElementById("totalPower"),
-      hardwareCost: document.getElementById("hardwareCost"),
-      infraCost: document.getElementById("infraCost"),
-      fixedCapex: document.getElementById("fixedCapex"),
+      devicePreset: document.getElementById("devicePreset"),
+      machineCount: document.getElementById("machineCount"),
+      sellPerHour: document.getElementById("sellPerHour"),
+      utilizationRate: document.getElementById("utilizationRate"),
       electricityPrice: document.getElementById("electricityPrice"),
       dailyHours: document.getElementById("dailyHours"),
       monthlyOpex: document.getElementById("monthlyOpex"),
-      outRacks: document.getElementById("outRacks"),
-      outMachines: document.getElementById("outMachines"),
+      installCost: document.getElementById("installCost"),
+      purchaseCost: document.getElementById("purchaseCost"),
+      pvOffset: document.getElementById("pvOffset"),
+      deviceSpec: document.getElementById("deviceSpec"),
+      outPurchase: document.getElementById("outPurchase"),
+      outDailyCompute: document.getElementById("outDailyCompute"),
+      outRevenue: document.getElementById("outRevenue"),
       outPowerCost: document.getElementById("outPowerCost"),
-      outCapex: document.getElementById("outCapex"),
-      outOpex: document.getElementById("outOpex"),
-      outPerMachine: document.getElementById("outPerMachine"),
+      outNet: document.getElementById("outNet"),
+      outPayback: document.getElementById("outPayback"),
       calcSummary: document.getElementById("calcSummary"),
     };
     const money = new Intl.NumberFormat("zh-CN", { style: "currency", currency: "CNY", maximumFractionDigits: 0 });
     const number = new Intl.NumberFormat("zh-CN", { maximumFractionDigits: 0 });
     function val(input, fallback) {
       const n = Number(input?.value);
-      return Number.isFinite(n) && n > 0 ? n : fallback;
+      return Number.isFinite(n) && n >= 0 ? n : fallback;
+    }
+    function populateDevices() {
+      if (!calc.devicePreset) return;
+      calc.devicePreset.innerHTML = devicePresets.map((d, i) => '<option value="' + i + '">' + d.name + '</option>').join("");
+    }
+    function syncPreset() {
+      const preset = devicePresets[Number(calc.devicePreset.value) || 0];
+      calc.purchaseCost.value = preset.purchaseCost;
+      calc.installCost.value = preset.installCost;
+      calc.deviceSpec.textContent = preset.name + " \u00b7 " + preset.notes + " \u00b7 \u5355\u53f0\u65e5\u7b97\u529b\u7ea6 " + number.format(preset.dailyCompute) + " \u7b97\u529b\u5355\u4f4d\u3002";
     }
     function updateCalculator() {
-      if (!calc.roomArea) return;
-      const roomArea = val(calc.roomArea, 300);
-      const rackFootprint = val(calc.rackFootprint, 0.8);
-      const aisleFactor = val(calc.aisleFactor, 1.8);
-      const machinesPerRack = Math.max(1, Math.floor(val(calc.machinesPerRack, 12)));
-      const powerPerMachine = val(calc.powerPerMachine, 1.2);
-      const totalPower = val(calc.totalPower, 240);
-      const hardwareCost = val(calc.hardwareCost, 28000);
-      const infraCost = val(calc.infraCost, 9000);
-      const fixedCapex = val(calc.fixedCapex, 850000);
+      if (!calc.devicePreset) return;
+      const preset = devicePresets[Number(calc.devicePreset.value) || 0];
+      const machineCount = Math.max(1, Math.floor(val(calc.machineCount, 1)));
+      const sellPerHour = val(calc.sellPerHour, 8.5);
+      const utilizationRate = Math.min(100, val(calc.utilizationRate, 65)) / 100;
       const electricityPrice = val(calc.electricityPrice, 0.72);
       const dailyHours = Math.min(24, val(calc.dailyHours, 20));
-      const monthlyOpex = val(calc.monthlyOpex, 78000);
+      const monthlyOpex = val(calc.monthlyOpex, 7800);
+      const installCost = val(calc.installCost, preset.installCost);
+      const purchaseCost = val(calc.purchaseCost, preset.purchaseCost);
+      const pvOffset = val(calc.pvOffset, 0);
+      const dailyCompute = preset.dailyCompute * machineCount;
+      const monthlyRevenue = machineCount * sellPerHour * dailyHours * 30 * utilizationRate;
+      const powerCost = machineCount * preset.powerKW * dailyHours * 30 * electricityPrice;
+      const totalCapex = machineCount * (purchaseCost + installCost);
+      const monthlyNet = monthlyRevenue - powerCost - (monthlyOpex * machineCount) + pvOffset;
+      const paybackMonths = monthlyNet > 0 ? totalCapex / monthlyNet : Infinity;
 
-      const usableArea = roomArea / aisleFactor;
-      const racksByArea = Math.max(0, Math.floor(usableArea / rackFootprint));
-      const racksByPower = Math.max(0, Math.floor(totalPower / (powerPerMachine * machinesPerRack)));
-      const rackCount = Math.max(0, Math.min(racksByArea, racksByPower));
-      const machineCount = rackCount * machinesPerRack;
-      const monthlyKwh = machineCount * powerPerMachine * dailyHours * 30;
-      const powerCost = monthlyKwh * electricityPrice;
-      const capex = fixedCapex + machineCount * (hardwareCost + infraCost);
-      const opex = monthlyOpex + powerCost;
-      const perMachine = machineCount > 0 ? capex / machineCount : 0;
-
-      calc.outRacks.textContent = number.format(rackCount);
-      calc.outMachines.textContent = number.format(machineCount);
+      calc.outPurchase.textContent = money.format(totalCapex);
+      calc.outDailyCompute.textContent = number.format(dailyCompute) + " \u7b97\u529b\u5355\u4f4d/\u65e5";
+      calc.outRevenue.textContent = money.format(monthlyRevenue);
       calc.outPowerCost.textContent = money.format(powerCost);
-      calc.outCapex.textContent = money.format(capex);
-      calc.outOpex.textContent = money.format(opex);
-      calc.outPerMachine.textContent = machineCount > 0 ? money.format(perMachine) : "-";
-      calc.calcSummary.textContent = "\u6309\u5f53\u524d\u53c2\u6570\uff0c\u7ea6\u53ef\u5e03\u7f6e " + number.format(rackCount) + "\u4e2a\u673a\u67dc\u3001" + number.format(machineCount) + "\u53f0\u673a\u5668\uff1b\u529f\u7387\u4e0a\u9650\u5148\u4e8e\u9762\u79ef\u65f6\uff0c\u4f1a\u81ea\u52a8\u6309\u529f\u7387\u6536\u53e3\u3002";
+      calc.outNet.textContent = money.format(monthlyNet);
+      calc.outPayback.textContent = Number.isFinite(paybackMonths) ? paybackMonths.toFixed(1) + " \u4e2a\u6708" : "\u4e0d\u53ef\u56de\u672c";
+      calc.calcSummary.textContent = "\u6309\u5f53\u524d\u914d\u7f6e\uff0c" + number.format(machineCount) + " \u53f0\u8bbe\u5907\u603b\u6295\u5165\u7ea6 " + money.format(totalCapex) + "\uff0c\u6708\u51c0\u6536\u76ca\u7ea6 " + money.format(monthlyNet) + "\uff0c\u56de\u672c\u5468\u671f\u7ea6 " + (Number.isFinite(paybackMonths) ? paybackMonths.toFixed(1) + " \u4e2a\u6708\u3002" : "\u6682\u4e0d\u53ef\u56de\u672c\u3002") + "\u91c7\u8d2d\u6210\u672c\u3001\u9500\u552e\u5355\u4ef7\u3001\u5149\u4f0f\u62b5\u6263\u90fd\u53ef\u4ee5\u76f4\u63a5\u6539\u3002";
+      calc.deviceSpec.textContent = preset.name + " \u00b7 " + preset.notes + " \u00b7 \u5355\u53f0\u529f\u7387\u7ea6 " + preset.powerKW + " kW\uff0c\u5355\u53f0\u65e5\u7b97\u529b\u7ea6 " + number.format(preset.dailyCompute) + " \u7b97\u529b\u5355\u4f4d\u3002";
     }
     function activate(id) {
       buttons.forEach(btn => btn.classList.toggle("active", btn.dataset.target === id));
@@ -585,10 +600,13 @@
       location.hash = "#" + id;
     }
     buttons.forEach(btn => btn.addEventListener("click", () => activate(btn.dataset.target)));
+    populateDevices();
+    calc.devicePreset.addEventListener("change", () => { syncPreset(); updateCalculator(); });
     Object.values(calc).forEach(el => el && el.addEventListener("input", updateCalculator));
     const start = location.hash.replace("#", "") || "overview";
     if (sections[start]) activate(start);
     else activate("overview");
+    syncPreset();
     updateCalculator();
   </script>
 </body>
