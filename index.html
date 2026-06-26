@@ -728,9 +728,9 @@
 
       const a100Ref = PARTS_DATA.computePlat.find(p => p.spec && p.spec.includes("A100"));
       const refPrice = a100Ref ? a100Ref.priceHour : 14;
-      setText("outRefPrice", ¥" + numFmt.format(refPrice) + "/时");
+      setText("outRefPrice", " + "¥" + numFmt.format(refPrice) + "/时");
 
-      const monthlyHours = devCnt * 20 * 30;
+      const monthlyHours = devCnt *Cnt * 20 * 30;
       const hourlyRate = refPrice * 0.7;
       const rev50 = monthlyHours * hourlyRate * 0.5;
       const rev70 = monthlyHours * hourlyRate * 0.7;
