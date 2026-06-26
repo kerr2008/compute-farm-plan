@@ -211,12 +211,20 @@
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
     }
-    @media (max-width: 42rem) {
-      .calc-grid { grid-template-columns: 1fr; }
-      .calc-results { grid-template-columns: 1fr; }
-      .result-box { min-height: 80px; }
-      .result-box strong { font-size: 22px; }
-      .calc-field input { padding: 12px 14px; font-size: 16px; }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
     .calc-field {
       display: grid;
@@ -290,21 +298,117 @@
       .sidebar { position: static; }
       .hero-content { grid-template-columns: 1fr; }
       .section-grid, .img-grid, .layer-grid, .stat-grid, .calc-results { grid-template-columns: 1fr 1fr; }
-      .calc-grid { grid-template-columns: 1fr; }
+      .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .calc-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 780px) {
-      .layout { grid-template-columns: 1fr; }
-      .sidebar { position: static; }
       .wrap { padding: 14px; }
       .topbar { flex-direction: column; align-items: flex-start; }
       .hero h2 { font-size: 30px; }
-      .hero { min-height: 260px; }
-      .hero-content { min-height: 260px; padding: 20px; grid-template-columns: 1fr; }
       .hero-content { padding: 20px; }
       .section-grid, .img-grid, .layer-grid, .stat-grid, .calc-results { grid-template-columns: 1fr; }
-      .calc-grid { grid-template-columns: 1fr; }
+      .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
-  </style>
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .calc-grid { grid-template-columns: 1fr; }
+    }
+  
+
+  /* -- Mobile-first responsive overrides -- */
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { position: static; }
+    .hero-content { grid-template-columns: 1fr; min-height: auto; padding: 24px; }
+    .hero h2 { font-size: 28px; }
+  }
+  @media (max-width: 600px) {
+    .wrap { padding: 12px; }
+    .brand h1 { font-size: 16px; }
+    .brand p { font-size: 10px; }
+    .hero { min-height: auto; }
+    .hero-content { padding: 18px; }
+    .hero h2 { font-size: 22px; }
+    .section-grid { grid-template-columns: 1fr !important; }
+    .img-grid { grid-template-columns: 1fr !important; }
+  }
+  /* -- Calculator mobile optimizations -- */
+  @media (max-width: 520px) {
+    .calc-grid { grid-template-columns: 1fr; }
+    .calc-results { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .calc-field input {
+      min-height: 48px;
+      font-size: 16px;
+      padding: 12px 14px;
+    }
+    .result-box { min-height: auto; padding: 12px; }
+    .result-box strong { font-size: 16px; }
+    .topbar { flex-direction: column; align-items: stretch; gap: 8px; }
+    .actions { justify-content: stretch; }
+    .action { flex: 1; justify-content: center; }
+  }
+  @media (max-width: 380px) {
+    .calc-results { grid-template-columns: 1fr; }
+  }
+  /* -- Better touch sizing for calculator inputs -- */
+  .calc-field input { font-size: 15px; }
+  .calc-field input:focus { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+  
+  /* -- Calculator parts selector styles -- */
+  .calc-field select {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 10px 12px;
+    font: inherit;
+    color: var(--text);
+    background: #fff;
+    cursor: pointer;
+    appearance: auto;
+  }
+  .calc-field select:focus { outline: 2px solid var(--blue); outline-offset: 2px; }
+  .cost-highlight { background: linear-gradient(135deg, #fff8e6, #fffcf5) !important; border-color: #f0c040 !important; }
+  .cost-highlight strong { color: #c78200; font-size: 28px; }
+  .calc-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .calc-table th { background: #f3f7fd; position: sticky; top: 0; }
+  .calc-table th, .calc-table td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; }
+  .calc-table tbody tr:hover { background: #f8fbff; }
+  .inline-input { width: 90px; border: 1px solid var(--line); border-radius: 8px; padding: 4px 8px; font: inherit; }
+  .tiny-input { width: 70px; border: 1px solid var(--line); border-radius: 6px; padding: 3px 6px; font: inherit; font-size: 12px; }
+  .inline-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .calc-field select { font-size: 14px; }
+  @media (max-width: 520px) {
+    .calc-field select { min-height: 48px; font-size: 16px; }
+    .cost-highlight strong { font-size: 18px; }
+    .inline-row { flex-direction: column; align-items: stretch; }
+  }
+</style>
 </head>
 <body>
   <div class="wrap">
@@ -461,37 +565,53 @@
         <div class="section-head">
           <div>
             <h3>成本计算器</h3>
-            <p>输入场地、机柜和单机参数，直接计算能容线和总成本。</p>
+            <p>配件选配 + 自动汇总成本</p>
           </div>
           <div class="section-id">CALCULATOR</div>
         </div>
-        <div class="section-grid"><div class="card"><h4>参数输入</h4><div class="body">
-                <div class="calc-grid">
-                  <label class="calc-field"><span>机房面积（㎡）</span><input id="roomArea" type="number" min="1" value="300" /></label>
-                  <label class="calc-field"><span>单柜占地（㎡）</span><input id="rackFootprint" type="number" min="0.1" step="0.1" value="0.8" /></label>
-                  <label class="calc-field"><span>通道系数</span><input id="aisleFactor" type="number" min="1" step="0.1" value="1.8" /></label>
-                  <label class="calc-field"><span>每柜机器数</span><input id="machinesPerRack" type="number" min="1" value="12" /></label>
-                  <label class="calc-field"><span>单机功率（kW）</span><input id="powerPerMachine" type="number" min="0.1" step="0.1" value="1.2" /></label>
-                  <label class="calc-field"><span>可用功率（kW）</span><input id="totalPower" type="number" min="1" value="240" /></label>
-                  <label class="calc-field"><span>单机硬件成本（元）</span><input id="hardwareCost" type="number" min="0" value="28000" /></label>
-                  <label class="calc-field"><span>单机配套成本（元）</span><input id="infraCost" type="number" min="0" value="9000" /></label>
-                  <label class="calc-field"><span>机房建设固定投入（元）</span><input id="fixedCapex" type="number" min="0" value="850000" /></label>
-                  <label class="calc-field"><span>月电价（元/kWh）</span><input id="electricityPrice" type="number" min="0" step="0.01" value="0.72" /></label>
-                  <label class="calc-field"><span>日均利用小时</span><input id="dailyHours" type="number" min="1" max="24" value="20" /></label>
-                  <label class="calc-field"><span>月场地与运维（元）</span><input id="monthlyOpex" type="number" min="0" value="78000" /></label>
-                </div>
-                <div class="calc-note">结果按面积、机柜、功率三重约束同时收紧，避免只看一项导致超配。</div>
-                </div></div><div class="card"><h4>计算结果</h4><div class="body">
-                <div class="calc-results">
-                  <div class="result-box"><span>可用机柜数</span><strong id="outRacks">-</strong><em>按面积和通道系数估算</em></div>
-                  <div class="result-box"><span>可容纳机器数</span><strong id="outMachines">-</strong><em>受机柜数与功率双约束</em></div>
-                  <div class="result-box"><span>月电费</span><strong id="outPowerCost">-</strong><em>按满载估算</em></div>
-                  <div class="result-box"><span>总 CAPEX</span><strong id="outCapex">-</strong><em>固定投入 + 单机投入</em></div>
-                  <div class="result-box"><span>月 OPEX</span><strong id="outOpex">-</strong><em>电费 + 场地运维</em></div>
-                  <div class="result-box"><span>单机综合成本</span><strong id="outPerMachine">-</strong><em>总 CAPEX / 机器数</em></div>
-                </div>
-                <div class="calc-summary" id="calcSummary">-</div>
-                </div></div><div class="card"><h4>规则说明</h4><div class="body"><ul><li>机柜数 = 可用面积 /举模单柜占地×通道系数</li><li>机器数 = 机柜数 × 每柜机器数，再受功率限制</li><li>功率成本 = 机器数 × 单机功率 × 日均运行小时 × 30 × 电价</li><li>总成本 = 固定投入 + 单机硬件 + 单机配套</li></ul></div></div></div>
+        <div class="section-grid"><div class="card"><h4>设备配件选配</h4><div class="body">><div class="calc-grid">
+  <label class="calc-field"><span>选择GPU型号</span><select id="selGpu"><option value="">-- 请选择 --</option><option value="rtx5090">NVIDIA RTX 5090 32GB GDDR7 | FP16:180T | ¥42,999</option><option value="rtx4090">NVIDIA RTX 4090 24GB GDDR6X | FP16:82.6T | ¥24,999</option><option value="rtx4070ti">NVIDIA RTX 4070 Ti Super 16GB GDDR6X | FP16:44.4T | ¥8,999</option><option value="h100">NVIDIA H100 SXM 80GB HBM3 | FP16:1000T | ¥300,000</option><option value="a100">NVIDIA A100 80GB 80GB HBM2e | FP16:312T | ¥150,000</option><option value="l40s">NVIDIA L40S 48GB GDDR6 | FP16:182T | ¥85,000</option><option value="mi300x">AMD MI300X 192GB HBM3 | FP16:653T | ¥180,000</option><option value="ascend910b">华为 昇腾910B 64GB HBM2e | FP16:400T | ¥120,000</option></select></label>
+  <label class="calc-field"><span>选择CPU型号</span><select id="selCpu"><option value="">-- 请选择 --</option><option value="xeon-plat-8580">Intel Xeon Platinum 8580 (60核) | ¥75,000</option><option value="xeon-gold-6548">Intel Xeon Gold 6548N (32核) | ¥28,000</option><option value="epyc-9654">AMD EPYC 9654 (96核) | ¥45,000</option><option value="epyc-9334">AMD EPYC 9334 (32核) | ¥18,000</option><option value="threadripper-7980x">AMD Threadripper 7980X (64核) | ¥35,000</option><option value="i9-14900k">Intel Core i9-14900K (24核) | ¥5,500</option></select></label>
+  <label class="calc-field"><span>选择内存</span><select id="selMem"><option value="">-- 请选择 --</option><option value="ddr5-32g">DDR5 ECC 32GB (32GB) | ¥800</option><option value="ddr5-64g">DDR5 ECC 64GB (64GB) | ¥1,500</option><option value="ddr5-128g">DDR5 ECC 128GB (128GB) | ¥3,200</option><option value="ddr5-256g">DDR5 ECC 256GB (256GB) | ¥6,500</option><option value="ddr4-64g">DDR4 ECC 64GB (64GB) | ¥900</option></select></label>
+  <label class="calc-field"><span>选择存储</span><select id="selSto"><option value="">-- 请选择 --</option><option value="ssd-2t">Samsung 990 Pro 2TB NVMe | ¥1,500</option><option value="ssd-4t">Samsung 990 Pro 4TB NVMe | ¥3,500</option><option value="ssd-8t-ent">Kioxia 企业级8TB NVMe U.2 | ¥6,500</option><option value="ssd-15t-ent">Kioxia/Samsung 企业级15.36TB NVMe U.2 | ¥12,000</option><option value="hdd-16t">WD/Seagate 16TB HDD 7200rpm | ¥2,800</option></select></label>
+  <label class="calc-field"><span>选择网络</span><select id="selNet"><option value="">-- 请选择 --</option><option value="nic-25g">Mellanox/Intel 25GbE 双口网卡 | ¥2,500</option><option value="nic-100g">Mellanox/Nvidia 100GbE 单口网卡 | ¥8,000</option><option value="nic-200g">Nvidia ConnectX-7 200GbE 双口网卡 | ¥18,000</option><option value="switch-25g-48">H3C/Huawei 48口25GbE ToR交换机 | ¥35,000</option><option value="switch-100g-32">H3C/Huawei 32口100GbE核心交换机 | ¥85,000</option></select></label>
+  <label class="calc-field"><span>机箱电源</span><select id="selChas"><option value="">-- 请选择 --</option><option value="gpu-chassis-4u">Supermicro/国产 4U GPU服务器机箱(含冗余电源) | ¥3,500</option><option value="psu-2000w">台达/长城 2000W 1+1冗余电源 铂金 | ¥3,500</option></select></label>
+  <label class="calc-field"><span>每台GPU数量(1-8)</span><input id="gpuQty" type="number" min="1" max="8" value="8" /></label>
+  <label class="calc-field"><span>采购设备数量(台)</span><input id="devCnt" type="number" min="1" value="10" /></label>
+</div></div></div><div class="card"><h4>单台设备成本汇总</h4><div class="body"><div class="calc-results">
+  <div class="result-box"><span>GPU总价</span><strong id="outGpuTotal">-</strong><em>单价&times;数量</em></div>
+  <div class="result-box"><span>CPU价格</span><strong id="outCpuPrice">-</strong></div>
+  <div class="result-box"><span>内存价格</span><strong id="outMemPrice">-</strong></div>
+  <div class="result-box"><span>存储价格</span><strong id="outStoPrice">-</strong></div>
+  <div class="result-box"><span>网络价格</span><strong id="outNetPrice">-</strong></div>
+  <div class="result-box"><span>机箱电源价格</span><strong id="outChasPrice">-</strong></div>
+  <div class="result-box cost-highlight"><span>单台设备总成本</span><strong id="outDevCost">-</strong></div>
+  <div class="result-box"><span>单台功耗估算</span><strong id="outDevTdp">-</strong><em>W</em></div>
+  <div class="result-box"><span>单台FP16算力</span><strong id="outDevFlops">-</strong><em>TFLOPS</em></div>
+</div></div></div><div class="card"><h4>项目总投入</h4><div class="body"><div class="calc-results">
+  <div class="result-box"><span>设备数量</span><strong id="outTotalDevices">-</strong><em>台</em></div>
+  <div class="result-box"><span>设备总成本</span><strong id="outDevTotalCost">-</strong></div>
+  <div class="result-box"><span>机柜数量估算</span><strong id="outRackCnt">-</strong><em>每柜8台</em></div>
+  <div class="result-box"><span>机柜+基础设施均摊</span><strong id="outRackInfra">-</strong></div>
+  <div class="result-box"><span>场地/电力固定投入</span><input id="fixedCost" type="number" min="0" value="200000" class="inline-input" /></div>
+  <div class="result-box cost-highlight"><span>项目总CAPEX</span><strong id="outTotalCapex">-</strong></div>
+  <div class="result-box"><span>月电费估算</span><strong id="outMonthlyElec">-</strong></div>
+  <div class="result-box"><span>月OPEX估算</span><strong id="outMonthlyOpex">-</strong></div>
+</div>
+<div class="calc-note inline-row">
+  <label>电价(元/kWh): <input id="elecPrice" type="number" min="0" step="0.01" value="0.72" class="tiny-input" /></label>
+  <label>月宽带(元): <input id="broadband" type="number" min="0" value="8000" class="tiny-input" /></label>
+  <label>月人工(元): <input id="labor" type="number" min="0" value="15000" class="tiny-input" /></label>
+  <label>月场地(元): <input id="rent" type="number" min="0" value="12000" class="tiny-input" /></label>
+</div></div></div><div class="card"><h4>成本回收测算</h4><div class="body"><div class="calc-results">
+  <div class="result-box"><span>产出的总算力</span><strong id="outTotalFlops">-</strong><em>TFLOPS FP16</em></div>
+  <div class="result-box"><span>参考时价对比</span><strong id="outRefPrice">-</strong><em>元/时</em></div>
+  <div class="result-box"><span>50% 上架率 月收入</span><strong id="outRev50">-</strong></div>
+  <div class="result-box"><span>70% 上架率 月收入</span><strong id="outRev70">-</strong></div>
+  <div class="result-box"><span>90% 上架率 月收入</span><strong id="outRev90">-</strong></div>
+  <div class="result-box cost-highlight"><span>回收周期(月)</span><strong id="outPayback">-</strong></div>
+</div>
+<div class="calc-note">说明：算力实际售价需根据市场调整，参考AutoDL/AWS等平台定价。</div></div></div><div class="card"><h4>算力售价参考表</h4><div class="body"><table class="calc-table"><thead><tr><th>平台</th><th>实例</th><th>规格</th><th>时价(元/时)</th><th>月价(元/月)</th></tr></thead><tbody><tr><td>阿里云</td><td>A100x1卡</td><td>A100 80GB</td><td>¥42</td><td>¥30,240</td></tr><tr><td>阿里云</td><td>V100x1卡</td><td>V100 32GB</td><td>¥18</td><td>¥12,960</td></tr><tr><td>腾讯云</td><td>A100x1卡</td><td>A100 80GB</td><td>¥38</td><td>¥27,360</td></tr><tr><td>腾讯云</td><td>4090x1卡</td><td>RTX 4090 24GB</td><td>¥15</td><td>¥10,800</td></tr><tr><td>华为云</td><td>升腾910Bx1</td><td>910B 64GB</td><td>¥35</td><td>¥25,200</td></tr><tr><td>AWS</td><td>p4d.24xlarge</td><td>A100 80GB x8卡</td><td>¥206</td><td>¥148,320</td></tr><tr><td>AutoDL</td><td>A100x1</td><td>A100 80GB竞价</td><td>¥12</td><td>¥8,640</td></tr><tr><td>AutoDL</td><td>4090x1</td><td>RTX 4090 24GB</td><td>¥4.5</td><td>¥3,240</td></tr><tr><td>Featurize</td><td>4090x1</td><td>RTX 4090 24GB</td><td>¥5</td><td>¥3,600</td></tr><tr><td>矩池云</td><td>A100x1</td><td>A100 80GB</td><td>¥14</td><td>¥10,080</td></tr><tr><td>Vast.ai</td><td>4090x1</td><td>RTX 4090 24GB出租</td><td>¥0.85</td><td>¥612</td></tr><tr><td>Vast.ai</td><td>H100x1</td><td>H100 80GB出租</td><td>¥3.5</td><td>¥2,520</td></tr></tbody></table></div></div></div>
         
       </section>
     
@@ -523,70 +643,106 @@
     </div>
   </div>
 
-  <script>
+    <script>
+        const PARTS_DATA = JSON.parse(PARTS_RAW);
     const sections = {"overview": "overview", "product": "product", "tech": "tech", "infra": "infra", "ops": "ops", "finance": "finance", "calculator": "calculator", "roadmap": "roadmap", "compliance": "compliance"};
     const buttons = document.querySelectorAll(".nav-btn");
-    const calc = {
-      roomArea: document.getElementById("roomArea"),
-      rackFootprint: document.getElementById("rackFootprint"),
-      aisleFactor: document.getElementById("aisleFactor"),
-      machinesPerRack: document.getElementById("machinesPerRack"),
-      powerPerMachine: document.getElementById("powerPerMachine"),
-      totalPower: document.getElementById("totalPower"),
-      hardwareCost: document.getElementById("hardwareCost"),
-      infraCost: document.getElementById("infraCost"),
-      fixedCapex: document.getElementById("fixedCapex"),
-      electricityPrice: document.getElementById("electricityPrice"),
-      dailyHours: document.getElementById("dailyHours"),
-      monthlyOpex: document.getElementById("monthlyOpex"),
-      outRacks: document.getElementById("outRacks"),
-      outMachines: document.getElementById("outMachines"),
-      outPowerCost: document.getElementById("outPowerCost"),
-      outCapex: document.getElementById("outCapex"),
-      outOpex: document.getElementById("outOpex"),
-      outPerMachine: document.getElementById("outPerMachine"),
-      calcSummary: document.getElementById("calcSummary"),
-    };
     const money = new Intl.NumberFormat("zh-CN", { style: "currency", currency: "CNY", maximumFractionDigits: 0 });
-    const number = new Intl.NumberFormat("zh-CN", { maximumFractionDigits: 0 });
-    function val(input, fallback) {
-      const n = Number(input?.value);
+    const numFmt = new Intl.NumberFormat("zh-CN", { maximumFractionDigits: 0 });
+
+    function getSelVal(selId) {
+      const sel = document.getElementById(selId);
+      return sel && sel.value ? sel.value : null;
+    }
+    function getNum(id, fallback) {
+      const n = Number(document.getElementById(id)?.value);
       return Number.isFinite(n) && n > 0 ? n : fallback;
     }
-    function updateCalculator() {
-      if (!calc.roomArea) return;
-      const roomArea = val(calc.roomArea, 300);
-      const rackFootprint = val(calc.rackFootprint, 0.8);
-      const aisleFactor = val(calc.aisleFactor, 1.8);
-      const machinesPerRack = Math.max(1, Math.floor(val(calc.machinesPerRack, 12)));
-      const powerPerMachine = val(calc.powerPerMachine, 1.2);
-      const totalPower = val(calc.totalPower, 240);
-      const hardwareCost = val(calc.hardwareCost, 28000);
-      const infraCost = val(calc.infraCost, 9000);
-      const fixedCapex = val(calc.fixedCapex, 850000);
-      const electricityPrice = val(calc.electricityPrice, 0.72);
-      const dailyHours = Math.min(24, val(calc.dailyHours, 20));
-      const monthlyOpex = val(calc.monthlyOpex, 78000);
-
-      const usableArea = roomArea / aisleFactor;
-      const racksByArea = Math.max(0, Math.floor(usableArea / rackFootprint));
-      const racksByPower = Math.max(0, Math.floor(totalPower / (powerPerMachine * machinesPerRack)));
-      const rackCount = Math.max(0, Math.min(racksByArea, racksByPower));
-      const machineCount = rackCount * machinesPerRack;
-      const monthlyKwh = machineCount * powerPerMachine * dailyHours * 30;
-      const powerCost = monthlyKwh * electricityPrice;
-      const capex = fixedCapex + machineCount * (hardwareCost + infraCost);
-      const opex = monthlyOpex + powerCost;
-      const perMachine = machineCount > 0 ? capex / machineCount : 0;
-
-      calc.outRacks.textContent = number.format(rackCount);
-      calc.outMachines.textContent = number.format(machineCount);
-      calc.outPowerCost.textContent = money.format(powerCost);
-      calc.outCapex.textContent = money.format(capex);
-      calc.outOpex.textContent = money.format(opex);
-      calc.outPerMachine.textContent = machineCount > 0 ? money.format(perMachine) : "-";
-      calc.calcSummary.textContent = "\u6309\u5f53\u524d\u53c2\u6570\uff0c\u7ea6\u53ef\u5e03\u7f6e " + number.format(rackCount) + "\u4e2a\u673a\u67dc\u3001" + number.format(machineCount) + "\u53f0\u673a\u5668\uff1b\u529f\u7387\u4e0a\u9650\u5148\u4e8e\u9762\u79ef\u65f6\uff0c\u4f1a\u81ea\u52a8\u6309\u529f\u7387\u6536\u53e3\u3002";
+    function setText(id, text) {
+      const el = document.getElementById(id);
+      if (el) el.textContent = text;
     }
+
+    function updateAll() {
+      const gpuId = getSelVal("selGpu");
+      const cpuId = getSelVal("selCpu");
+      const memId = getSelVal("selMem");
+      const stoId = getSelVal("selSto");
+      const netId = getSelVal("selNet");
+      const chasId = getSelVal("selChas");
+      const gpuQty = Math.max(1, Math.min(8, getNum("gpuQty", 8)));
+      const devCnt = Math.max(1, getNum("devCnt", 10));
+
+      const gpu = PARTS_DATA.gpu.find(g => g.id === gpuId);
+      const cpu = PARTS_DATA.cpu.find(c => c.id === cpuId);
+      const mem = PARTS_DATA.memory.find(m => m.id === memId);
+      const sto = PARTS_DATA.storage.find(s => s.id === stoId);
+      const net = PARTS_DATA.network.find(n => n.id === netId);
+      const chas = PARTS_DATA.platform.find(p => p.id === chasId);
+
+      const gpuTotal = gpu ? gpu.price * gpuQty : 0;
+      const cpuPrice = cpu ? cpu.price : 0;
+      const memPrice = mem ? mem.price : 0;
+      const stoPrice = sto ? sto.price : 0;
+      const netPrice = net ? net.price : 0;
+      const chasPrice = chas ? chas.price * 2 : 0;
+
+      setText("outGpuTotal", money.format(gpuTotal));
+      setText("outCpuPrice", money.format(cpuPrice));
+      setText("outMemPrice", money.format(memPrice));
+      setText("outStoPrice", money.format(stoPrice));
+      setText("outNetPrice", money.format(netPrice));
+      setText("outChasPrice", money.format(chasPrice));
+
+      const singleDevCost = gpuTotal + cpuPrice + memPrice + stoPrice + netPrice + chasPrice;
+      setText("outDevCost", money.format(singleDevCost));
+      const singleTdp = (gpu ? gpu.tdp * gpuQty : 0) + (cpu ? cpu.tdp : 0) + (mem ? mem.tdp : 0) + (sto ? sto.tdp : 0) + (net ? net.tdp : 0);
+      setText("outDevTdp", numFmt.format(singleTdp) + " W");
+      const singleFlops = gpu ? gpu.tflops_fp16 * gpuQty : 0;
+      setText("outDevFlops", numFmt.format(singleFlops) + " TFLOPS");
+
+      setText("outTotalDevices", numFmt.format(devCnt));
+      const devTotalCost = singleDevCost * devCnt;
+      setText("outDevTotalCost", money.format(devTotalCost));
+      const rackCnt = Math.ceil(devCnt / 8);
+      const rackInfra = rackCnt * 15000;
+      setText("outRackCnt", numFmt.format(rackCnt) + " 个");
+      setText("outRackInfra", money.format(rackInfra));
+
+      const fixedCost = getNum("fixedCost", 200000);
+      const totalCapex = devTotalCost + rackInfra + fixedCost;
+      setText("outTotalCapex", money.format(totalCapex));
+
+      const elecPrice = getNum("elecPrice", 0.72);
+      const monthlyElec = singleTdp / 1000 * devCnt * 20 * 30 * elecPrice;
+      setText("outMonthlyElec", money.format(monthlyElec));
+
+      const broadband = getNum("broadband", 8000);
+      const labor = getNum("labor", 15000);
+      const rent = getNum("rent", 12000);
+      const monthlyOpex = monthlyElec + broadband + labor + rent;
+      setText("outMonthlyOpex", money.format(monthlyOpex));
+
+      const totalFlops = singleFlops * devCnt;
+      setText("outTotalFlops", numFmt.format(totalFlops) + " TFLOPS");
+
+      const a100Ref = PARTS_DATA.computePlat.find(p => p.spec && p.spec.includes("A100"));
+      const refPrice = a100Ref ? a100Ref.priceHour : 14;
+      setText("outRefPrice", ¥" + numFmt.format(refPrice) + "/时");
+
+      const monthlyHours = devCnt * 20 * 30;
+      const hourlyRate = refPrice * 0.7;
+      const rev50 = monthlyHours * hourlyRate * 0.5;
+      const rev70 = monthlyHours * hourlyRate * 0.7;
+      const rev90 = monthlyHours * hourlyRate * 0.9;
+      setText("outRev50", money.format(rev50));
+      setText("outRev70", money.format(rev70));
+      setText("outRev90", money.format(rev90));
+
+      const payback = rev70 > 0 ? totalCapex / (rev70 - monthlyOpex) : 999;
+      setText("outPayback", payback > 0 && payback < 999 ? numFmt.format(Math.ceil(payback)) + " 个月" : "--");
+    }
+
     function activate(id) {
       buttons.forEach(btn => btn.classList.toggle("active", btn.dataset.target === id));
       Object.entries(sections).forEach(([key, nodeId]) => {
@@ -595,12 +751,18 @@
       });
       location.hash = "#" + id;
     }
+
     buttons.forEach(btn => btn.addEventListener("click", () => activate(btn.dataset.target)));
-    Object.values(calc).forEach(el => el && el.addEventListener("input", updateCalculator));
+
+    const calcInputs = document.querySelectorAll("#selGpu, #selCpu, #selMem, #selSto, #selNet, #selChas, #gpuQty, #devCnt, #fixedCost, #elecPrice, #broadband, #labor, #rent");
+    calcInputs.forEach(el => el && el.addEventListener("input", updateAll));
+    calcInputs.forEach(el => el && el.addEventListener("change", updateAll));
+
     const start = location.hash.replace("#", "") || "overview";
     if (sections[start]) activate(start);
     else activate("overview");
-    updateCalculator();
+    setTimeout(updateAll, 100);
   </script>
+
 </body>
 </html>
