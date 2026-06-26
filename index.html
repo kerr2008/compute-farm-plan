@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="zh-CN">
 <head>
@@ -45,13 +44,6 @@
     .tiny span { font-size: 10px; color: rgba(236,243,255,.5); }
     .tiny strong { font-size: 16px; }
     .layout { display: grid; grid-template-columns: 240px 1fr; gap: 18px; align-items: start; }
-    @media (max-width: 1200px) {
-      .layout { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 780px) {
-      .wrap { padding: 14px; }
-      .hero-content { grid-template-columns: 1fr; }
-    }
     .sidebar, .content {
       border: 1px solid var(--line);
       background: var(--panel);
@@ -144,12 +136,8 @@
     .tiny-input { width: 70px; border: 1px solid var(--line); border-radius: 6px; padding: 3px 6px; font: inherit; font-size: 12px; }
     .inline-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
     .calc-field select { font-size: 14px; }
-    @media (max-width: 520px) {
-      .calc-field select { min-height: 48px; font-size: 16px; }
-      .cost-highlight strong { font-size: 18px; }
-      .inline-row { flex-direction: column; align-items: stretch; }
-    }
   </style>
+
 /* -- Mobile-first responsive overrides -- */
   @media (max-width: 900px) {
     .layout { grid-template-columns: 1fr; }
@@ -436,10 +424,10 @@
   <div class="result-box"><span>月OPEX估算</span><strong id="outMonthlyOpex">-</strong></div>
 </div>
 <div class="calc-note inline-row">
-  <label>电价(元/kWh): <input id="elecPrice" type="number" min="0" step="0.01" value="0.72" class="tiny-input" /></label>
-  <label>月宽带(元): <input id="broadband" type="number" min="0" value="8000" class="tiny-input" /></label>
-  <label>月人工(元): <input id="labor" type="number" min="0" value="15000" class="tiny-input" /></label>
-  <label>月场地(元): <input id="rent" type="number" min="0" value="12000" class="tiny-input" /></label>
+  <label style="display:inline-flex;align-items:center;gap:4px"><input id="useElec" type="checkbox" checked /> 电费 <input id="elecPrice" type="number" min="0" step="0.01" value="0.72" class="tiny-input" /></label>
+  <label style="display:inline-flex;align-items:center;gap:4px"><input id="useBband" type="checkbox" checked /> 宽带 <input id="broadband" type="number" min="0" value="8000" class="tiny-input" /></label>
+  <label style="display:inline-flex;align-items:center;gap:4px"><input id="useLabor" type="checkbox" checked /> 人工 <input id="labor" type="number" min="0" value="15000" class="tiny-input" /></label>
+  <label style="display:inline-flex;align-items:center;gap:4px"><input id="useRent" type="checkbox" checked /> 场地 <input id="rent" type="number" min="0" value="12000" class="tiny-input" /></label>
 </div></div></div><div class="card"><h4>成本回收测算</h4><div class="body"><div class="calc-results">
   <div class="result-box"><span>产出的总算力</span><strong id="outTotalFlops">-</strong><em>TFLOPS FP16</em></div>
   <div class="result-box"><span>参考时价对比</span><strong id="outRefPrice">-</strong><em>元/时</em></div>
@@ -459,6 +447,25 @@
             <p>把项目推进节奏说得更清楚。</p>
           </div>
           <div class="section-id">ROADMAP</div>
+        <div class="card">
+          <h4>标准配置算力售价</h4>
+          <div class="body">
+            <div style="text-align:center;margin-bottom:10px">
+              <button onclick="updateAll();document.getElementById('outStdPrice').scrollIntoView({behavior:'smooth'})" 
+                style="background:var(--accent);color:#fff;border:none;border-radius:10px;padding:10px 24px;font-size:16px;font-weight:600;cursor:pointer">
+                一键核算设备成本
+              </button>
+            </div>
+            <div class="calc-results">
+              <div class="result-box"><span>配置方案</span><strong id="outStdGpu">--</strong></div>
+              <div class="result-box"><span>单台成本</span><strong id="outStdCost">--</strong></div>
+              <div class="result-box"><span>单台算力</span><strong id="outStdFlops">--</strong></div>
+              <div class="result-box cost-highlight"><span>建议售价</span><strong id="outStdPrice">--</strong><em>元/时</em></div>
+              <div class="result-box"><span>回收周期(月)</span><strong id="outStdBreakEven">--</strong></div>
+            </div>
+            <div class="calc-note">说明：建议售价 = 参考时价 × 70%，以市场竞争力为主。全部选择完成配件后点击一键核算。</div>
+          </div>
+        </div>
         </div>
         <div class="section-grid"><div class="card"><h4>实施里程碑</h4><div class="body"><table><thead><tr><th>阶段</th><th>目标</th><th>产出</th></tr></thead><tbody><tr><td>阶段 1</td><td>定址与选房</td><td>选址、环评、立项</td></tr><tr><td>阶段 2</td><td>设备采购</td><td>BOM 、价格、时间表</td></tr><tr><td>阶段 3</td><td>试运行</td><td>监控、计费、维护流程</td></tr><tr><td>阶段 4</td><td>商业化</td><td>SLA、销售和规模扩展</td></tr></tbody></table></div></div><div class="card"><h4>组织分工</h4><div class="body"><ul><li>项目负责人</li><li>采购负责人</li><li>运维负责人</li><li>网络负责人</li><li>安全负责人</li><li>财务负责人</li></ul></div></div></div>
         
