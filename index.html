@@ -644,7 +644,341 @@
   </div>
 
     <script>
-        const PARTS_DATA = JSON.parse(PARTS_RAW);
+        const PARTS_DATA = {
+  "gpu": [
+    {
+      "id": "rtx5090",
+      "brand": "NVIDIA",
+      "model": "RTX 5090",
+      "vram": "32GB GDDR7",
+      "tflops_fp16": 180,
+      "tflops_fp32": 90,
+      "price": 42999,
+      "tdp": 575
+    },
+    {
+      "id": "rtx4090",
+      "brand": "NVIDIA",
+      "model": "RTX 4090",
+      "vram": "24GB GDDR6X",
+      "tflops_fp16": 82.6,
+      "tflops_fp32": 41.3,
+      "price": 24999,
+      "tdp": 450
+    },
+    {
+      "id": "rtx4070ti",
+      "brand": "NVIDIA",
+      "model": "RTX 4070 Ti Super",
+      "vram": "16GB GDDR6X",
+      "tflops_fp16": 44.4,
+      "tflops_fp32": 22.2,
+      "price": 8999,
+      "tdp": 285
+    },
+    {
+      "id": "h100",
+      "brand": "NVIDIA",
+      "model": "H100 SXM",
+      "vram": "80GB HBM3",
+      "tflops_fp16": 1000,
+      "tflops_fp32": 60,
+      "price": 300000,
+      "tdp": 700
+    },
+    {
+      "id": "a100",
+      "brand": "NVIDIA",
+      "model": "A100 80GB",
+      "vram": "80GB HBM2e",
+      "tflops_fp16": 312,
+      "tflops_fp32": 19.5,
+      "price": 150000,
+      "tdp": 400
+    },
+    {
+      "id": "l40s",
+      "brand": "NVIDIA",
+      "model": "L40S",
+      "vram": "48GB GDDR6",
+      "tflops_fp16": 182,
+      "tflops_fp32": 45.8,
+      "price": 85000,
+      "tdp": 350
+    },
+    {
+      "id": "mi300x",
+      "brand": "AMD",
+      "model": "MI300X",
+      "vram": "192GB HBM3",
+      "tflops_fp16": 653,
+      "tflops_fp32": 81.7,
+      "price": 180000,
+      "tdp": 750
+    },
+    {
+      "id": "ascend910b",
+      "brand": "华为",
+      "model": "昇腾910B",
+      "vram": "64GB HBM2e",
+      "tflops_fp16": 400,
+      "tflops_fp32": 50,
+      "price": 120000,
+      "tdp": 310
+    }
+  ],
+  "cpu": [
+    {
+      "id": "xeon-plat-8580",
+      "brand": "Intel",
+      "model": "Xeon Platinum 8580",
+      "cores": 60,
+      "price": 75000,
+      "tdp": 350
+    },
+    {
+      "id": "xeon-gold-6548",
+      "brand": "Intel",
+      "model": "Xeon Gold 6548N",
+      "cores": 32,
+      "price": 28000,
+      "tdp": 250
+    },
+    {
+      "id": "epyc-9654",
+      "brand": "AMD",
+      "model": "EPYC 9654",
+      "cores": 96,
+      "price": 45000,
+      "tdp": 360
+    },
+    {
+      "id": "epyc-9334",
+      "brand": "AMD",
+      "model": "EPYC 9334",
+      "cores": 32,
+      "price": 18000,
+      "tdp": 240
+    },
+    {
+      "id": "threadripper-7980x",
+      "brand": "AMD",
+      "model": "Threadripper 7980X",
+      "cores": 64,
+      "price": 35000,
+      "tdp": 350
+    },
+    {
+      "id": "i9-14900k",
+      "brand": "Intel",
+      "model": "Core i9-14900K",
+      "cores": 24,
+      "price": 5500,
+      "tdp": 253
+    }
+  ],
+  "memory": [
+    {
+      "id": "ddr5-32g",
+      "brand": "Samsung/SK",
+      "model": "DDR5 ECC 32GB",
+      "capacity_gb": 32,
+      "price": 800,
+      "tdp": 7
+    },
+    {
+      "id": "ddr5-64g",
+      "brand": "Samsung/SK",
+      "model": "DDR5 ECC 64GB",
+      "capacity_gb": 64,
+      "price": 1500,
+      "tdp": 10
+    },
+    {
+      "id": "ddr5-128g",
+      "brand": "Samsung/SK",
+      "model": "DDR5 ECC 128GB",
+      "capacity_gb": 128,
+      "price": 3200,
+      "tdp": 14
+    },
+    {
+      "id": "ddr5-256g",
+      "brand": "Samsung/SK",
+      "model": "DDR5 ECC 256GB",
+      "capacity_gb": 256,
+      "price": 6500,
+      "tdp": 20
+    },
+    {
+      "id": "ddr4-64g",
+      "brand": "Samsung/SK",
+      "model": "DDR4 ECC 64GB",
+      "capacity_gb": 64,
+      "price": 900,
+      "tdp": 8
+    }
+  ],
+  "storage": [
+    {
+      "id": "ssd-2t",
+      "brand": "Samsung",
+      "model": "990 Pro 2TB NVMe",
+      "capacity_tb": 2,
+      "price": 1500,
+      "tdp": 8
+    },
+    {
+      "id": "ssd-4t",
+      "brand": "Samsung",
+      "model": "990 Pro 4TB NVMe",
+      "capacity_tb": 4,
+      "price": 3500,
+      "tdp": 10
+    },
+    {
+      "id": "ssd-8t-ent",
+      "brand": "Kioxia",
+      "model": "企业级8TB NVMe U.2",
+      "capacity_tb": 8,
+      "price": 6500,
+      "tdp": 14
+    },
+    {
+      "id": "ssd-15t-ent",
+      "brand": "Kioxia",
+      "model": "企业级15.36TB NVMe U.2",
+      "capacity_tb": 15.36,
+      "price": 12000,
+      "tdp": 18
+    },
+    {
+      "id": "hdd-16t",
+      "brand": "WD/Seagate",
+      "model": "16TB HDD 7200rpm",
+      "capacity_tb": 16,
+      "price": 2800,
+      "tdp": 8
+    }
+  ],
+  "network": [
+    {
+      "id": "nic-25g",
+      "brand": "Mellanox/Intel",
+      "model": "25GbE双口网卡",
+      "price": 2500,
+      "tdp": 15
+    },
+    {
+      "id": "nic-100g",
+      "brand": "Mellanox/Nvidia",
+      "model": "100GbE单口网卡",
+      "price": 8000,
+      "tdp": 20
+    },
+    {
+      "id": "nic-200g",
+      "brand": "Nvidia ConnectX-7",
+      "model": "200GbE双口网卡",
+      "price": 18000,
+      "tdp": 25
+    }
+  ],
+  "platform": [
+    {
+      "id": "gpu-chassis",
+      "brand": "Supermicro/国产",
+      "model": "4U GPU服务器机箱(含冗余电源)",
+      "price": 7000
+    }
+  ],
+  "computePlat": [
+    {
+      "platform": "阿里云",
+      "inst": "GPU A100x1",
+      "spec": "A100 80GB",
+      "priceHour": 42,
+      "priceMonth": 30240
+    },
+    {
+      "platform": "阿里云",
+      "inst": "GPU V100x1",
+      "spec": "V100 32GB",
+      "priceHour": 18,
+      "priceMonth": 12960
+    },
+    {
+      "platform": "腾讯云",
+      "inst": "GPU A100x1",
+      "spec": "A100 80GB",
+      "priceHour": 38,
+      "priceMonth": 27360
+    },
+    {
+      "platform": "腾讯云",
+      "inst": "GPU 4090x1",
+      "spec": "RTX 4090 24GB",
+      "priceHour": 15,
+      "priceMonth": 10800
+    },
+    {
+      "platform": "华为云",
+      "inst": "升腾910Bx1",
+      "spec": "910B 64GB",
+      "priceHour": 35,
+      "priceMonth": 25200
+    },
+    {
+      "platform": "AWS",
+      "inst": "p4d.24xlarge",
+      "spec": "A100 80GB x8",
+      "priceHour": 206,
+      "priceMonth": 148320
+    },
+    {
+      "platform": "AutoDL",
+      "inst": "A100x1(竞价)",
+      "spec": "A100 80GB",
+      "priceHour": 12,
+      "priceMonth": 8640
+    },
+    {
+      "platform": "AutoDL",
+      "inst": "RTX 4090x1",
+      "spec": "RTX 4090 24GB",
+      "priceHour": 4.5,
+      "priceMonth": 3240
+    },
+    {
+      "platform": "Featurize",
+      "inst": "RTX 4090x1",
+      "spec": "RTX 4090 24GB",
+      "priceHour": 5,
+      "priceMonth": 3600
+    },
+    {
+      "platform": "矩池云",
+      "inst": "A100x1",
+      "spec": "A100 80GB",
+      "priceHour": 14,
+      "priceMonth": 10080
+    },
+    {
+      "platform": "Vast.ai",
+      "inst": "RTX 4090x1(出租)",
+      "spec": "RTX 4090 24GB",
+      "priceHour": 0.85,
+      "priceMonth": 612
+    },
+    {
+      "platform": "Vast.ai",
+      "inst": "H100x1(出租)",
+      "spec": "H100 80GB",
+      "priceHour": 3.5,
+      "priceMonth": 2520
+    }
+  ]
+};
     const sections = {"overview": "overview", "product": "product", "tech": "tech", "infra": "infra", "ops": "ops", "finance": "finance", "calculator": "calculator", "roadmap": "roadmap", "compliance": "compliance"};
     const buttons = document.querySelectorAll(".nav-btn");
     const money = new Intl.NumberFormat("zh-CN", { style: "currency", currency: "CNY", maximumFractionDigits: 0 });
