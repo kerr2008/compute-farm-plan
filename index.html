@@ -395,18 +395,103 @@
           <div class="section-id">CALCULATOR</div>
         </div>
         <div class="section-grid"><div class="card"><h4>设备配件选配</h4><div class="body">><div class="calc-grid">
-  <label class="calc-field"><span>选择GPU型号</span><select id="selGpu"><option value="">-- 请选择 --</option><option value="rtx5090">NVIDIA RTX 5090 32GB GDDR7 | FP16:180T | ¥42,999</option><option value="rtx4090">NVIDIA RTX 4090 24GB GDDR6X | FP16:82.6T | ¥24,999</option><option value="rtx4070ti">NVIDIA RTX 4070 Ti Super 16GB GDDR6X | FP16:44.4T | ¥8,999</option><option value="h100">NVIDIA H100 SXM 80GB HBM3 | FP16:1000T | ¥300,000</option><option value="a100">NVIDIA A100 80GB 80GB HBM2e | FP16:312T | ¥150,000</option><option value="l40s">NVIDIA L40S 48GB GDDR6 | FP16:182T | ¥85,000</option><option value="mi300x">AMD MI300X 192GB HBM3 | FP16:653T | ¥180,000</option><option value="ascend910b">华为 昇腾910B 64GB HBM2e | FP16:400T | ¥120,000</option></select>
-              <button onclick="buyOnJD('selGpu','gpu')" style="background:#e4393c;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;white-space:nowrap;margin:2px 0">京东购</button></label>
-  <label class="calc-field"><span>选择CPU型号</span><select id="selCpu"><option value="">-- 请选择 --</option><option value="xeon-plat-8580">Intel Xeon Platinum 8580 (60核) | ¥75,000</option><option value="xeon-gold-6548">Intel Xeon Gold 6548N (32核) | ¥28,000</option><option value="epyc-9654">AMD EPYC 9654 (96核) | ¥45,000</option><option value="epyc-9334">AMD EPYC 9334 (32核) | ¥18,000</option><option value="threadripper-7980x">AMD Threadripper 7980X (64核) | ¥35,000</option><option value="i9-14900k">Intel Core i9-14900K (24核) | ¥5,500</option></select>
-              <button onclick="buyOnJD('selCpu','cpu')" style="background:#e4393c;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;white-space:nowrap;margin:2px 0">京东购</button></label>
-  <label class="calc-field"><span>选择内存</span><select id="selMem"><option value="">-- 请选择 --</option><option value="ddr5-32g">DDR5 ECC 32GB (32GB) | ¥800</option><option value="ddr5-64g">DDR5 ECC 64GB (64GB) | ¥1,500</option><option value="ddr5-128g">DDR5 ECC 128GB (128GB) | ¥3,200</option><option value="ddr5-256g">DDR5 ECC 256GB (256GB) | ¥6,500</option><option value="ddr4-64g">DDR4 ECC 64GB (64GB) | ¥900</option></select>
-              <button onclick="buyOnJD('selMem','memory')" style="background:#e4393c;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;white-space:nowrap;margin:2px 0">京东购</button></label>
-  <label class="calc-field"><span>选择存储</span><select id="selSto"><option value="">-- 请选择 --</option><option value="ssd-2t">Samsung 990 Pro 2TB NVMe | ¥1,500</option><option value="ssd-4t">Samsung 990 Pro 4TB NVMe | ¥3,500</option><option value="ssd-8t-ent">Kioxia 企业级8TB NVMe U.2 | ¥6,500</option><option value="ssd-15t-ent">Kioxia/Samsung 企业级15.36TB NVMe U.2 | ¥12,000</option><option value="hdd-16t">WD/Seagate 16TB HDD 7200rpm | ¥2,800</option></select>
-              <button onclick="buyOnJD('selSto','storage')" style="background:#e4393c;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;white-space:nowrap;margin:2px 0">京东购</button></label>
-  <label class="calc-field"><span>选择网络</span><select id="selNet"><option value="">-- 请选择 --</option><option value="nic-25g">Mellanox/Intel 25GbE 双口网卡 | ¥2,500</option><option value="nic-100g">Mellanox/Nvidia 100GbE 单口网卡 | ¥8,000</option><option value="nic-200g">Nvidia ConnectX-7 200GbE 双口网卡 | ¥18,000</option><option value="switch-25g-48">H3C/Huawei 48口25GbE ToR交换机 | ¥35,000</option><option value="switch-100g-32">H3C/Huawei 32口100GbE核心交换机 | ¥85,000</option></select>
-              <button onclick="buyOnJD('selNet','network')" style="background:#e4393c;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;white-space:nowrap;margin:2px 0">京东购</button></label>
-  <label class="calc-field"><span>机箱电源</span><select id="selPlat"><option value="">-- 请选择 --</option><option value="gpu-chassis-4u">Supermicro/国产 4U GPU服务器机箱(含冗余电源) | ¥3,500</option><option value="psu-2000w">台达/长城 2000W 1+1冗余电源 铂金 | ¥3,500</option></select>
-              <button onclick="buyOnJD('selPlat','platform')" style="background:#e4393c;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;white-space:nowrap;margin:2px 0">京东购</button></label>
+  <label class="calc-field"><span>选择GPU型号</span><select id="selGpu">
+<option value="">-- 请选择 --</option>
+<option value="h100-80g">NVIDIA H100 SXM 80GB HBM3 | FP16:1000T | ¥300,000</option>
+<option value="h200-141g">NVIDIA H200 SXM 141GB HBM3e | FP16:1000T | ¥350,000</option>
+<option value="b200-192g">NVIDIA B200 SXM 192GB HBM3e | FP16:2500T | ¥450,000</option>
+<option value="a100-80g">NVIDIA A100 SXM 80GB HBM2e | FP16:312T | ¥150,000</option>
+<option value="a100-40g">NVIDIA A100 PCIe 40GB 40GB HBM2e | FP16:312T | ¥85,000</option>
+<option value="a800-80g">NVIDIA A800 80GB 80GB HBM2e | FP16:312T | ¥120,000</option>
+<option value="l40s-48g">NVIDIA L40S 48GB GDDR6 | FP16:182T | ¥85,000</option>
+<option value="l20-48g">NVIDIA L20 48GB GDDR6 | FP16:144T | ¥55,000</option>
+<option value="v100-32g">NVIDIA V100 SXM 32GB HBM2 | FP16:125T | ¥45,000</option>
+<option value="v100-16g">NVIDIA V100 PCIe 16GB 16GB HBM2 | FP16:125T | ¥28,000</option>
+<option value="t4-16g">NVIDIA T4 16GB GDDR6 | FP16:65T | ¥18,000</option>
+<option value="rtx5090-32g">NVIDIA RTX 5090 32GB GDDR7 | FP16:180T | ¥42,999</option>
+<option value="rtx5080-24g">NVIDIA RTX 5080 24GB GDDR7 | FP16:120T | ¥24,999</option>
+<option value="rtx4090-24g">NVIDIA RTX 4090 24GB GDDR6X | FP16:82.6T | ¥24,999</option>
+<option value="rtx4080s-16g">NVIDIA RTX 4080 Super 16GB GDDR6X | FP16:55T | ¥12,999</option>
+<option value="rtx4070ti-16g">NVIDIA RTX 4070 Ti Super 16GB GDDR6X | FP16:44.4T | ¥8,999</option>
+<option value="rtx4070-12g">NVIDIA RTX 4070 12GB GDDR6X | FP16:35T | ¥5,999</option>
+<option value="rtx4060ti-16g">NVIDIA RTX 4060 Ti 16GB 16GB GDDR6 | FP16:23T | ¥4,299</option>
+<option value="rtx3060-12g">NVIDIA RTX 3060 12GB 12GB GDDR6 | FP16:12T | ¥2,499</option>
+<option value="mi300x-192g">AMD MI300X 192GB HBM3 | FP16:653T | ¥180,000</option>
+<option value="mi250-128g">AMD MI250 128GB HBM2e | FP16:362T | ¥120,000</option>
+<option value="mi210-64g">AMD MI210 64GB HBM2e | FP16:181T | ¥65,000</option>
+<option value="rx7900xtx-24g">AMD RX 7900 XTX 24GB GDDR6 | FP16:122T | ¥8,999</option>
+<option value="ascend910b-64g">华为 昇腾910B 64GB HBM2e | FP16:400T | ¥120,000</option>
+<option value="ascend310p-24g">华为 昇腾310P 24GB LPDDR4X | FP16:16T | ¥15,000</option>
+              <button onclick="buyOnJD('selGpu','gpu')" style="background:#e4393c;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;white-space:nowrap;margin:2px 0">京东购</button><input id="priceGpu" type="number" placeholder="手动输入价格" style="width:100px;border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-size:12px;margin-left:4px" title="留空则使用默认价格" /></label>
+  <label class="calc-field"><span>选择CPU型号</span><select id="selCpu">
+<option value="">-- 请选择 --</option>
+<option value="xeon-8592">Intel Xeon Platinum 8592+ (64核) | ¥72,000</option>
+<option value="xeon-8580">Intel Xeon Platinum 8580 (60核) | ¥65,000</option>
+<option value="xeon-6548">Intel Xeon Gold 6548N (32核) | ¥28,000</option>
+<option value="xeon-6526">Intel Xeon Gold 6526Y (16核) | ¥15,000</option>
+<option value="xeon-5515">Intel Xeon Silver 4514Y (16核) | ¥12,000</option>
+<option value="xeon-4410">Intel Xeon Silver 4410Y (12核) | ¥8,000</option>
+<option value="epyc-9754">AMD EPYC 9754 (128核) | ¥65,000</option>
+<option value="epyc-9654">AMD EPYC 9654 (96核) | ¥45,000</option>
+<option value="epyc-9554">AMD EPYC 9554 (64核) | ¥32,000</option>
+<option value="epyc-9334">AMD EPYC 9334 (32核) | ¥18,000</option>
+<option value="epyc-9224">AMD EPYC 9224 (24核) | ¥12,000</option>
+<option value="epyc-9124">AMD EPYC 9124 (16核) | ¥8,000</option>
+<option value="threadripper-7980x">AMD Threadripper 7980X (64核) | ¥35,000</option>
+<option value="threadripper-7960x">AMD Threadripper 7960X (24核) | ¥18,000</option>
+<option value="i9-14900k">Intel Core i9-14900K (24核) | ¥5,500</option>
+<option value="i7-14700k">Intel Core i7-14700K (20核) | ¥3,500</option>
+<option value="i5-14600k">Intel Core i5-14600K (14核) | ¥2,200</option>
+              <button onclick="buyOnJD('selCpu','cpu')" style="background:#e4393c;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;white-space:nowrap;margin:2px 0">京东购</button><input id="priceCpu" type="number" placeholder="手动输入价格" style="width:100px;border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-size:12px;margin-left:4px" title="留空则使用默认价格" /></label>
+  <label class="calc-field"><span>选择内存</span><select id="selMem">
+<option value="">-- 请选择 --</option>
+<option value="ddr5-512g-ecc">Samsung/SK DDR5 ECC 512GB | ¥15,000</option>
+<option value="ddr5-256g-ecc">Samsung/SK DDR5 ECC 256GB | ¥6,500</option>
+<option value="ddr5-128g-ecc">Samsung/SK DDR5 ECC 128GB | ¥3,200</option>
+<option value="ddr5-96g-ecc">Samsung/SK DDR5 ECC 96GB | ¥2,500</option>
+<option value="ddr5-64g-ecc">Samsung/SK DDR5 ECC 64GB | ¥1,500</option>
+<option value="ddr5-32g-ecc">Samsung/SK DDR5 ECC 32GB | ¥800</option>
+<option value="ddr4-128g-ecc">Samsung/SK DDR4 ECC 128GB | ¥1,800</option>
+<option value="ddr4-64g-ecc">Samsung/SK DDR4 ECC 64GB | ¥900</option>
+<option value="ddr4-32g-ecc">Samsung/SK DDR4 ECC 32GB | ¥450</option>
+              <button onclick="buyOnJD('selMem','memory')" style="background:#e4393c;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;white-space:nowrap;margin:2px 0">京东购</button><input id="priceMem" type="number" placeholder="手动输入价格" style="width:100px;border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-size:12px;margin-left:4px" title="留空则使用默认价格" /></label>
+  <label class="calc-field"><span>选择存储</span><select id="selSto">
+<option value="">-- 请选择 --</option>
+<option value="ssd-30t-ent">Kioxia/Samsung 企业级 30.72TB NVMe U.2 | ¥22,000</option>
+<option value="ssd-15t-ent">Kioxia/Samsung 企业级 15.36TB NVMe U.2 | ¥12,000</option>
+<option value="ssd-8t-ent">Kioxia/Samsung 企业级 8TB NVMe U.2 | ¥6,500</option>
+<option value="ssd-4t-ent">Kioxia/Samsung 企业级 4TB NVMe U.2 | ¥3,800</option>
+<option value="ssd-4t-pro">Samsung 990 Pro 4TB NVMe | ¥3,500</option>
+<option value="ssd-2t-pro">Samsung 990 Pro 2TB NVMe | ¥1,500</option>
+<option value="ssd-2t-plus">Samsung 870 EVO Plus 2TB SATA | ¥1,200</option>
+<option value="hdd-22t">WD/Seagate 22TB HDD 7200rpm | ¥3,800</option>
+<option value="hdd-16t">WD/Seagate 16TB HDD 7200rpm | ¥2,800</option>
+<option value="hdd-8t">WD/Seagate 8TB HDD 7200rpm | ¥1,200</option>
+              <button onclick="buyOnJD('selSto','storage')" style="background:#e4393c;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;white-space:nowrap;margin:2px 0">京东购</button><input id="priceSto" type="number" placeholder="手动输入价格" style="width:100px;border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-size:12px;margin-left:4px" title="留空则使用默认价格" /></label>
+  <label class="calc-field"><span>选择网络</span><select id="selNet">
+<option value="">-- 请选择 --</option>
+<option value="nic-400g">Nvidia ConnectX-8 400GbE 双口网卡 | ¥35,000</option>
+<option value="nic-200g">Nvidia ConnectX-7 200GbE 双口网卡 | ¥18,000</option>
+<option value="nic-100g-d">Mellanox/Nvidia 100GbE 双口网卡 | ¥12,000</option>
+<option value="nic-100g-s">Mellanox/Nvidia 100GbE 单口网卡 | ¥8,000</option>
+<option value="nic-50g">Mellanox/Intel 50GbE 双口网卡 | ¥4,500</option>
+<option value="nic-25g-d">Mellanox/Intel 25GbE 双口网卡 | ¥2,500</option>
+<option value="nic-25g-s">Mellanox/Intel 25GbE 单口网卡 | ¥1,500</option>
+<option value="nic-10g">Intel 10GbE 双口网卡 X710 | ¥1,200</option>
+<option value="switch-100g-32">H3C/Huawei 32口 100GbE 核心交换机 | ¥85,000</option>
+<option value="switch-25g-48">H3C/Huawei 48口 25GbE ToR交换机 | ¥35,000</option>
+<option value="switch-25g-24">H3C/Huawei 24口 25GbE 接入交换机 | ¥15,000</option>
+              <button onclick="buyOnJD('selNet','network')" style="background:#e4393c;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;white-space:nowrap;margin:2px 0">京东购</button><input id="priceNet" type="number" placeholder="手动输入价格" style="width:100px;border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-size:12px;margin-left:4px" title="留空则使用默认价格" /></label>
+  <label class="calc-field"><span>机箱电源</span><select id="selPlat">
+<option value="">-- 请选择 --</option>
+<option value="gpu-chassis-4u">Supermicro 4U GPU服务器平台(双路Xeon) (含主板/电源/散热) | ¥35,000</option>
+<option value="gpu-chassis-4u-b">国产白牌 4U GPU服务器机箱 (含冗余电源+散热模块) | ¥7,000</option>
+<option value="server-chassis-2u">Supermicro 2U 机架式服务器 (含主板/单电源) | ¥18,000</option>
+<option value="server-chassis-1u">Supermicro 1U 机架式服务器 (含主板/单电源) | ¥12,000</option>
+<option value="psu-3000w">台达 3000W 1+1冗余电源 钛金 (80+钛金牌) | ¥6,500</option>
+<option value="psu-2000w">台达 2000W 1+1冗余电源 铂金 (80+铂金牌) | ¥3,500</option>
+<option value="psu-1600w">长城 1600W 单电源 金牌 (80+金牌) | ¥1,800</option>
+              <button onclick="buyOnJD('selPlat','platform')" style="background:#e4393c;color:#fff;border:none;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;white-space:nowrap;margin:2px 0">京东购</button><input id="pricePlat" type="number" placeholder="手动输入价格" style="width:100px;border:1px solid var(--line);border-radius:6px;padding:4px 8px;font-size:12px;margin-left:4px" title="留空则使用默认价格" /></label>
   <label class="calc-field"><span>每台GPU数量(1-8)</span><input id="gpuQty" type="number" min="1" max="8" value="8" /></label>
   <label class="calc-field"><span>采购设备数量(台)</span><input id="devCnt" type="number" min="1" value="10" /></label>
 </div></div></div><div class="card"><h4>单台设备成本汇总</h4><div class="body"><div class="calc-results">
@@ -546,8 +631,18 @@
       const net=PARTS_DATA.network.find(n=>n.id===netId);
       const chas=PARTS_DATA.platform.find(p=>p.id===chasId);
 
-      const gpuTotal=gpu?gpu.price*gpuQty:0, cpuPrice=cpu?cpu.price:0, memPrice=mem?mem.price:0;
-      const stoPrice=sto?sto.price:0, netPrice=net?net.price:0, chasPrice=chas?chas.price*2:0;
+      const gpuPriceManual=getNum("priceGpu",0);
+      const cpuPriceManual=getNum("priceCpu",0);
+      const memPriceManual=getNum("priceMem",0);
+      const stoPriceManual=getNum("priceSto",0);
+      const netPriceManual=getNum("priceNet",0);
+      const platPriceManual=getNum("pricePlat",0);
+      const gpuTotal=gpuPriceManual>0?gpuPriceManual*gpuQty:(gpu?gpu.price*gpuQty:0);
+      const cpuPrice=cpuPriceManual>0?cpuPriceManual:(cpu?cpu.price:0);
+      const memPrice=memPriceManual>0?memPriceManual:(mem?mem.price:0);
+      const stoPrice=stoPriceManual>0?stoPriceManual:(sto?sto.price:0);
+      const netPrice=netPriceManual>0?netPriceManual:(net?net.price:0);
+      const chasPrice=platPriceManual>0?platPriceManual*2:(chas?chas.price*2:0);
       setText("outGpuTotal",money.format(gpuTotal));
       setText("outCpuPrice",money.format(cpuPrice));
       setText("outMemPrice",money.format(memPrice));
@@ -628,7 +723,7 @@
 
     buttons.forEach(b=>b.addEventListener("click",()=>activate(b.dataset.target)));
 
-    const calcInputs=document.querySelectorAll("#selGpu,#selCpu,#selMem,#selSto,#selNet,#selPlat,#gpuQty,#devCnt,#fixedCost,#elecPrice,#broadband,#labor,#rent,#useElec,#useBband,#useLabor,#useRent");
+    const calcInputs=document.querySelectorAll("#selGpu,#selCpu,#selMem,#selSto,#selNet,#selPlat,#priceGpu,#priceCpu,#priceMem,#priceSto,#priceNet,#pricePlat,#gpuQty,#devCnt,#fixedCost,#elecPrice,#broadband,#labor,#rent,#useElec,#useBband,#useLabor,#useRent");
     calcInputs.forEach(el=>el&&el.addEventListener("input",updateAll));
     calcInputs.forEach(el=>el&&el.addEventListener("change",updateAll));
 
@@ -636,22 +731,34 @@
     if(sections[start]) activate(start); else activate("overview");
     
     function autoConfig(spec) {
-      // Find matching GPU
-      const gpu = PARTS_DATA.gpu.find(g => g.model.includes(spec.split(' ')[0]) || g.vram.includes(spec.split(' ')[1] || ''));
+      // Find matching GPU with multiple fuzzy strategies
+      let gpu = null;
+      // Strategy 1: exact model match
+      const specClean = spec.replace('出租','').replace('竞价','').replace('x8卡','').trim();
+      const parts = specClean.split(' ');
+      gpu = PARTS_DATA.gpu.find(g => g.model.includes(parts[0]) && g.vram.includes(parts[1] || ''));
+      // Strategy 2: model only
+      if (!gpu) gpu = PARTS_DATA.gpu.find(g => g.model.includes(parts[0]));
+      // Strategy 3: VRAM match
       if (!gpu) {
-        // Try fuzzy match by vram
         const vram = spec.match(/(\d+)GB/);
-        if (vram) {
-          const match = PARTS_DATA.gpu.filter(g => g.vram.includes(vram[1]+'GB'));
-          if(match.length > 0) autoSelectGpu(match[0].id);
+        if (vram) gpu = PARTS_DATA.gpu.find(g => g.vram.includes(vram[1]+'GB'));
+      }
+      // Strategy 4: keyword match in spec
+      if (!gpu) {
+        const keywords = specClean.split(/[\s+]/);
+        for (const kw of keywords) {
+          if (kw.length < 2) continue;
+          gpu = PARTS_DATA.gpu.find(g => g.id.includes(kw.toLowerCase()) || g.model.includes(kw));
+          if (gpu) break;
         }
+      }
+      if (!gpu) {
         alert('未找到完全匹配的GPU，请手动选择');
         return;
       }
       autoSelectGpu(gpu.id);
-      // Auto-calculate
       setTimeout(updateAll, 50);
-      // Scroll to results
       document.getElementById('outStdPrice').scrollIntoView({behavior:'smooth'});
     }
 
