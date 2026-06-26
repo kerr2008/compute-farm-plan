@@ -436,7 +436,7 @@
   <div class="result-box"><span>90% 上架率 月收入</span><strong id="outRev90">-</strong></div>
   <div class="result-box cost-highlight"><span>回收周期(月)</span><strong id="outPayback">-</strong></div>
 </div>
-<div class="calc-note">说明：算力实际售价需根据市场调整，参考AutoDL/AWS等平台定价。</div></div></div><div class="card"><h4>算力售价参考表</h4><div class="body"><table class="calc-table"><thead><tr><th>平台</th><th>实例</th><th>规格</th><th>时价(元/时)</th><th>月价(元/月)</th></tr></thead><tbody><tr><td>阿里云</td><td>A100x1卡</td><td>A100 80GB</td><td>¥42</td><td>¥30,240</td></tr><tr><td>阿里云</td><td>V100x1卡</td><td>V100 32GB</td><td>¥18</td><td>¥12,960</td></tr><tr><td>腾讯云</td><td>A100x1卡</td><td>A100 80GB</td><td>¥38</td><td>¥27,360</td></tr><tr><td>腾讯云</td><td>4090x1卡</td><td>RTX 4090 24GB</td><td>¥15</td><td>¥10,800</td></tr><tr><td>华为云</td><td>升腾910Bx1</td><td>910B 64GB</td><td>¥35</td><td>¥25,200</td></tr><tr><td>AWS</td><td>p4d.24xlarge</td><td>A100 80GB x8卡</td><td>¥206</td><td>¥148,320</td></tr><tr><td>AutoDL</td><td>A100x1</td><td>A100 80GB竞价</td><td>¥12</td><td>¥8,640</td></tr><tr><td>AutoDL</td><td>4090x1</td><td>RTX 4090 24GB</td><td>¥4.5</td><td>¥3,240</td></tr><tr><td>Featurize</td><td>4090x1</td><td>RTX 4090 24GB</td><td>¥5</td><td>¥3,600</td></tr><tr><td>矩池云</td><td>A100x1</td><td>A100 80GB</td><td>¥14</td><td>¥10,080</td></tr><tr><td>Vast.ai</td><td>4090x1</td><td>RTX 4090 24GB出租</td><td>¥0.85</td><td>¥612</td></tr><tr><td>Vast.ai</td><td>H100x1</td><td>H100 80GB出租</td><td>¥3.5</td><td>¥2,520</td></tr></tbody></table></div></div></div>
+<div class="calc-note">说明：算力实际售价需根据市场调整，参考AutoDL/AWS等平台定价。</div></div></div><div class="card"><h4>算力售价参考表</h4><div class="body"><table class="calc-table"><thead><tr><th>平台</th><th>实例</th><th>规格</th><th>时价(元/时)</th><th>月价(元/月)</th><th>操作</th></tr></thead><tbody><tr><td>阿里云</td><td>A100x1卡</td><td>A100 80GB</td><td>¥42</td><td>¥30,240</td><td><button onclick="autoConfig('A100 80GB')" style="background:var(--accent);color:#fff;border:none;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer;white-space:nowrap">一键配置</button></td></tr><tr><td>阿里云</td><td>V100x1卡</td><td>V100 32GB</td><td>¥18</td><td>¥12,960</td><td><button onclick="autoConfig('V100 32GB')" style="background:var(--accent);color:#fff;border:none;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer;white-space:nowrap">一键配置</button></td></tr><tr><td>腾讯云</td><td>A100x1卡</td><td>A100 80GB</td><td>¥38</td><td>¥27,360</td><td><button onclick="autoConfig('A100 80GB')" style="background:var(--accent);color:#fff;border:none;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer;white-space:nowrap">一键配置</button></td></tr><tr><td>腾讯云</td><td>4090x1卡</td><td>RTX 4090 24GB</td><td>¥15</td><td>¥10,800</td><td><button onclick="autoConfig('RTX 4090 24GB')" style="background:var(--accent);color:#fff;border:none;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer;white-space:nowrap">一键配置</button></td></tr><tr><td>华为云</td><td>升腾910Bx1</td><td>910B 64GB</td><td>¥35</td><td>¥25,200</td><td><button onclick="autoConfig('910B 64GB')" style="background:var(--accent);color:#fff;border:none;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer;white-space:nowrap">一键配置</button></td></tr><tr><td>AWS</td><td>p4d.24xlarge</td><td>A100 80GB x8卡</td><td>¥206</td><td>¥148,320</td><td><button onclick="autoConfig('A100 80GB x8卡')" style="background:var(--accent);color:#fff;border:none;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer;white-space:nowrap">一键配置</button></td></tr><tr><td>AutoDL</td><td>A100x1</td><td>A100 80GB竞价</td><td>¥12</td><td>¥8,640</td><td><button onclick="autoConfig('A100 80GB竞价')" style="background:var(--accent);color:#fff;border:none;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer;white-space:nowrap">一键配置</button></td></tr><tr><td>AutoDL</td><td>4090x1</td><td>RTX 4090 24GB</td><td>¥4.5</td><td>¥3,240</td><td><button onclick="autoConfig('RTX 4090 24GB')" style="background:var(--accent);color:#fff;border:none;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer;white-space:nowrap">一键配置</button></td></tr><tr><td>Featurize</td><td>4090x1</td><td>RTX 4090 24GB</td><td>¥5</td><td>¥3,600</td><td><button onclick="autoConfig('RTX 4090 24GB')" style="background:var(--accent);color:#fff;border:none;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer;white-space:nowrap">一键配置</button></td></tr><tr><td>矩池云</td><td>A100x1</td><td>A100 80GB</td><td>¥14</td><td>¥10,080</td><td><button onclick="autoConfig('A100 80GB')" style="background:var(--accent);color:#fff;border:none;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer;white-space:nowrap">一键配置</button></td></tr><tr><td>Vast.ai</td><td>4090x1</td><td>RTX 4090 24GB出租</td><td>¥0.85</td><td>¥612</td><td><button onclick="autoConfig('RTX 4090 24GB出租')" style="background:var(--accent);color:#fff;border:none;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer;white-space:nowrap">一键配置</button></td></tr><tr><td>Vast.ai</td><td>H100x1</td><td>H100 80GB出租</td><td>¥3.5</td><td>¥2,520</td><td><button onclick="autoConfig('H100 80GB出租')" style="background:var(--accent);color:#fff;border:none;border-radius:6px;padding:3px 10px;font-size:11px;cursor:pointer;white-space:nowrap">一键配置</button></td></tr></tbody></table></div></div></div>
         
       </section>
     
@@ -602,6 +602,61 @@
 
     const start=location.hash.replace("#","")||"overview";
     if(sections[start]) activate(start); else activate("overview");
+    
+    function autoConfig(spec) {
+      // Find matching GPU
+      const gpu = PARTS_DATA.gpu.find(g => g.model.includes(spec.split(' ')[0]) || g.vram.includes(spec.split(' ')[1] || ''));
+      if (!gpu) {
+        // Try fuzzy match by vram
+        const vram = spec.match(/(\d+)GB/);
+        if (vram) {
+          const match = PARTS_DATA.gpu.filter(g => g.vram.includes(vram[1]+'GB'));
+          if(match.length > 0) autoSelectGpu(match[0].id);
+        }
+        alert('未找到完全匹配的GPU，请手动选择');
+        return;
+      }
+      autoSelectGpu(gpu.id);
+      // Auto-calculate
+      setTimeout(updateAll, 50);
+      // Scroll to results
+      document.getElementById('outStdPrice').scrollIntoView({behavior:'smooth'});
+    }
+
+    function autoSelectGpu(gpuId) {
+      const sel = document.getElementById('selGpu');
+      if (!sel) return;
+      // Find option with matching value
+      for (let i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value === gpuId) {
+          sel.value = gpuId;
+          // Also auto-select reasonable defaults for other parts
+          autoSelectDefault('selCpu', PARTS_DATA.cpu.map(c => c.id));
+          autoSelectDefault('selMem', PARTS_DATA.memory.map(m => m.id));
+          autoSelectDefault('selSto', PARTS_DATA.storage.map(s => s.id));
+          autoSelectDefault('selNet', PARTS_DATA.network.map(n => n.id));
+          autoSelectDefault('selPlat', PARTS_DATA.platform.map(p => p.id));
+          return;
+        }
+      }
+      // If exact not found, select first
+      if (sel.options.length > 1) sel.selectedIndex = 1;
+    }
+
+    function autoSelectDefault(selId, ids) {
+      const sel = document.getElementById(selId);
+      if (!sel) return;
+      // Select mid-range option
+      const mid = Math.floor(ids.length / 2);
+      for (let i = 0; i < sel.options.length; i++) {
+        if (sel.options[i].value === ids[mid]) {
+          sel.value = ids[mid];
+          return;
+        }
+      }
+      if (sel.options.length > 1) sel.selectedIndex = 1;
+    }
+
     setTimeout(updateAll,100);
 
 
